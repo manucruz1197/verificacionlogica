@@ -3,114 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario con Operadores Lógicos</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 20px; 
-            background-color: #2b2b2b; 
-            color: #f1c40f; 
-            display: flex; 
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-        }
-        form {
-            max-width: 600px; 
-            padding: 20px; 
-            border: 2px solid #f1c40f; 
-            border-radius: 10px; 
-            background-color: #3b3b3b;
-            box-shadow: 0 4px 8px rgba(241, 196, 15, 0.2);
-        }
-        h2, h3 { 
-            text-align: center; 
-        }
-        label, input, select, button {
-            display: block; 
-            width: 100%; 
-            margin-bottom: 15px; 
-        }
-        button {
-            padding: 10px; 
-            background-color: #f1c40f; 
-            color: #2b2b2b; 
-            border: none; 
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #e1b800;
-        }
-        #resultado, #resultadoBooleano {
-            text-align: center;
-            font-size: 1.5em;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        #resultado {
-            color: #2ecc71; 
-            text-shadow: 0 0 10px #27ae60;
-        }
-        #resultadoBooleano {
-            color: #e74c3c;
-            text-shadow: 0 0 10px #c0392b;
-        }
-    </style>
+    <title>Formulario de Contacto</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Formulario con Operadores Lógicos</h2>
-    <form id="logicForm">
-        <label for="valor1">Valor 1:</label>
-        <input type="number" id="valor1" name="valor1" required>
-
-        <label for="operador">Operador lógico:</label>
-        <select id="operador" name="operador">
-            <option value="AND">AND</option>
-            <option value="OR">OR</option>
-            <option value="XOR">XOR</option>
-        </select>
-
-        <label for="valor2">Valor 2:</label>
-        <input type="number" id="valor2" name="valor2" required>
-
-        <button type="button" onclick="evaluarLogica()">Evaluar</button>
-    </form>
-
-    <div>
-        <h3>Resultado:</h3>
-        <p id="resultado"></p>
-        <h3>Resultado (Verdadero o Falso):</h3>
-        <p id="resultadoBooleano"></p>
+    <div class="form-container">
+        <h2>Formulario de Contacto</h2>
+        <form id="contactForm" action="#" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+            <div class="form-group">
+                <label for="cif">CIF:</label>
+                <input type="text" id="cif" name="cif" pattern="[A-Za-z]\d{8}" title="El CIF debe comenzar con una letra seguida de 8 dígitos" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" pattern="\d{9}" title="El teléfono debe tener exactamente 9 dígitos" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje (Notas):</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
     </div>
-
-    <script>
-        function evaluarLogica() {
-            const valor1 = parseInt(document.getElementById('valor1').value);
-            const valor2 = parseInt(document.getElementById('valor2').value);
-            const operador = document.getElementById('operador').value;
-            let resultado;
-
-            switch (operador) {
-                case 'AND':
-                    resultado = valor1 & valor2;
-                    break;
-                case 'OR':
-                    resultado = valor1 | valor2;
-                    break;
-                case 'XOR':
-                    resultado = valor1 ^ valor2;
-                    break;
-                default:
-                    resultado = 'Operador no válido';
-            }
-
-            const resultadoBooleano = resultado ? 'Verdadero' : 'Falso';
-
-            document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
-            document.getElementById('resultadoBooleano').innerText = `Resultado lógico: ${resultadoBooleano}`;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
